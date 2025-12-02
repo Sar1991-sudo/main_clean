@@ -1,8 +1,22 @@
-print("program starting")
+print("Program starting.\n")
 
-num = int(input("Insert an integer: "))
+print("Check multiplicative persistence.")
+n = int(input("Insert an integer: "))
 
-steps = 0
+step = 0
 
-while num > 9:
-    
+while n >= 10:
+    step += 1
+    digits = [int(d) for d in str(n)]
+    product = 1
+    for d in digits:
+        product *= d
+
+    calc_str = " * ".join(str(d) for d in digits)
+    print(f"{step}: {calc_str} = {product}")
+
+    n = product
+
+print("No more steps.\n")
+print(f"This program took {step} step(s)\n")
+print("Program ending.")
