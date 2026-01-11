@@ -1,34 +1,27 @@
-print("Program starting.")
+def collatz_sequence(n: int)-> list[int]:
+    sequence = [n]
+    while n != 1:
+        if n % 2 == 0:
+            n //= 2
+        else:
+            n = 3 * n + 1
+        sequence.append(n)
+    return sequence
 
-start = int(input("Insert starting point: "))
-stop = int(input("Insert stopping point: "))
-inspect = int(input("Insert inspection point: "))
-
-if start >= stop:
-    print("Starting point value must be less than the stopping point value.")
-elif not (start <= inspect <= stop):
-    print("Inspection value must be within the range of start and stop.")
-else:
-    print("First loop- inspection with break:")
-    first = True
-    for i in range(start, stop):
-        if i == inspect:
-            break
-        if not first:
-            print("・", end="")
-        print(i, end="")
-        first = False
-    print()
-
-    print("Second loop - inspection with continue:")
-    first = True
-    for i in range(start, stop):
-        if i == inspect:
-            continue
-        if not first:
-            print("・", end="")
-        print(i, end="")
-        first = False
-    print()
-
-print("Program ending.")
+def main():
+    print("Program starting")
+    try:
+        num = int(input("Insert a positive integer. "))
+        if num <= 0:
+            print("Please insert a positive integer greater than 0.")
+            return 
+    expect ValueError:
+        print("Invalid input. Please enter a positive integer.")
+        return
+    seq = collatz_sequence(num)
+    print("->".join(map(str, seq)))
+    steps = len(seq) -1
+    print(f"Sequence had {steps} total steps.\n")
+    print("Program ending.")
+if __name__=="__main__":
+    main()
