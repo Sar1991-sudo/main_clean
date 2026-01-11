@@ -15,46 +15,43 @@
 # Program starting.
 # Options:
 def showOptions():
-    print("Menu:")
-    print("1. Increase")
-    print("2. Decrease")
-    print("3. Reset")
-    print("4. Show")
-    print("5. Exit")
+    print("Options:")
+    print("1 - Show count")
+    print("2 - Increase count")
+    print("3 - Reset count")
+    print("0 -  Exit")
     return None
 
 def askChoice():
-    choice = input("Select an option (1-5): ")
+    choice = input("Your choice:")
     if choice.isnumeric():
         return int(choice)
     else:
         print("Unknown option!")
-        return 0
+        return -1
     
 def main():
     counter = 0
-
+    print("Program starting.")
     while True:
         showOptions()
         choice = askChoice()
-        print
 
         if choice == 1:
-            counter += 1
+            print(f"Current count - {count}")
         elif choice == 2:
-            counter -= 1
+            counter += 1
+            print(f"Count increased!")
         elif choice == 3:
             counter = 0
-        elif choice == 4:
-            print(f"Current count: {counter}\n")
-        elif choice == 5:
-            print("Exiting program...")
+            print("Cleared count!\n")
+        elif choice == 0:
+            print(f"Exiting program.")
             break
         else:
-            pass
+            print("Unknown option!")
 
-print("Program ending.")
-if __name__ == "__main__":
+if __name__ == "__main__" or "unittest" in __import__("sys").modules:
     main()      
 # 1 - Show count
 # 2 - Increase count
